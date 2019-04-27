@@ -1,20 +1,27 @@
 
 const clock= document.getElementById('clock');
-let am_pm;
+
+
+const getMeridian =(hour,mins)=>{
+    if(hour>=0 && (hour<=11 && mins<=59))
+     return "AM";
+
+     else 
+     return "PM";
+}
 
 const handleClock=()=>{
     const time= new Date();
-    let hour = time.getHours();
-    let mins = time.getMinutes();
-    let secs= time.getSeconds();
+    const hour = time.getHours();
+    const mins = time.getMinutes();
+    const secs= time.getSeconds();
+    const am_pm=getMeridian(hour,mins);
+    let displayHour=hour;
     if(hour>12){
-        hour=hour-12;
-        am_pm='PM'    
+        displayHour=hour-12;
     }
-    else{
-        am_pm='AM'
-    }
-    const display= `${doubleDigit(hour)} : ${doubleDigit(mins)} : ${doubleDigit(secs)} ${am_pm}`;
+
+    const display= `${doubleDigit(displayHour)} : ${doubleDigit(mins)} : ${doubleDigit(secs)} ${am_pm}`;
     
     applicableBackground(hour,am_pm);    
     clock.innerText=display;
