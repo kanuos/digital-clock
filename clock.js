@@ -23,7 +23,7 @@ const handleClock=()=>{
 
     const display= `${doubleDigit(displayHour)} : ${doubleDigit(mins)} : ${doubleDigit(secs)} ${am_pm}`;
     
-    applicableBackground(hour,am_pm);    
+    applicableBackground(displayHour,am_pm);    
     clock.innerText=display;
     
 }
